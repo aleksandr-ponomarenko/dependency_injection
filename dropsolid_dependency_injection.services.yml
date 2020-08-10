@@ -1,0 +1,11 @@
+services:
+  dropsolid_dependency_injection.rest_connection:
+    class: Drupal\dropsolid_dependency_injection\RestConnection
+    arguments: ['@http_client']
+  plugin.manager.mail:
+    class: Drupal\dropsolid_dependency_injection\MailManager
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@config.factory', '@logger.factory', '@string_translation', '@renderer']
+  dropsolid_dependency_injection.breadcrumb:
+    class: Drupal\dropsolid_dependency_injection\BreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder }
